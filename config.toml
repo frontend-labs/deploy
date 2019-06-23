@@ -1,0 +1,4 @@
+baseURL = "http://deploy.frontendlabs.io/"
+languageCode = "en-us"
+title = "My Hugo Proto"
+theme = "hyde"

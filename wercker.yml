@@ -1,0 +1,40 @@
+# https://gettingthingstech.com/how-to-deploy-a-hugo-site-to-digitalocean-automatically-with-wercker/
+# https://josephstahl.com/blog/2015/04/24/publishing-a-hugo-blog-to-digitalocean-with-wercker/
+box: node
+build:
+  steps:
+    - script:
+        name: 'update themes'
+        code: |
+            echo "THEMES!"
+            cd ${WERCKER_SOURCE_DIR}
+            git submodule update --init --recursive
+            git submodule update --recursive --remote
+            echo "must exists!!"
+            ls -R /pipeline/source/themes/
+    - arjen/hugo-build:
+        version: "0.55.6" 
+        theme: hyde
+        flags: --buildDrafts=false
+deploy:
+  steps:
+    - install-packages:
+        packages: openssh-client rsync
+
+    - add-to-known_hosts:
+        hostname: $HOSTNAME
+
+    - mktemp:
+        envvar: PRIVATE_KEYPATH
+
+    - create-file:
+        name: write key
+        filename: $PRIVATE_KEYPATH 
+        content: $WERCKER_PRIVATE
+        overwrite: true
+
+    - script:
+        name: transfer blog
+        code: |
+            rsync -au -e "ssh -i $PRIVATE_KEYPATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress public/* $USER@$HOSTNAME:/var/www/deploy.frontendlabs
+            ssh -i $PRIVATE_KEYPATH -l root -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $HOSTNAME chown -R www-data:www-data /var/www/
