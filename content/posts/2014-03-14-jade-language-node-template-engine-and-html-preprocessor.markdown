@@ -24,7 +24,7 @@ Adicionalmente es un pre-procesador de código [HTML](https://frontendlabs.io/ta
 
 Los dejo con una presentación que hice hace algún tiempo sobre Jade, el código de los ejemplos lo puedes encontrar en este [repositorio en github](https://github.com/jansanchez/jade-examples).
 
-
+{{< speakerdeck id="f0a8cbd01dce0131047b4ece5468c54b">}}
 
 Si estás interesado en aprender más sobre Jade, esta web te servirá mucho [learnjade.com](http://www.learnjade.com/)
 
