@@ -74,7 +74,7 @@ make new_post name="my-post-demo"
 Para visualizar el sitio en local con posts en borrador:
 
 ```
-make server_draft
+make server_local
 ```
 
 Para visualizar el sitio en local con posts públicos:

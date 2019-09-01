@@ -1,0 +1,4 @@
+baseURL = "https://localhost:1313/"
+languageCode = "en-us"
+title = "My Hugo Proto"
+theme = "hyde"
