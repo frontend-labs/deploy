@@ -80,17 +80,17 @@ make server_draft
 Para visualizar el sitio en local con posts públicos:
 
 ```
-maker server
+make server
 ```
 
 Para generar los archivos estáticos con posts en draft
 
 ```
-maker build_draft
+make build_draft
 ```
 
 Para generar los archivos estáticos con posts públicos
 
 ```
-maker build
+make build
 ```
