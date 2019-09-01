@@ -1,7 +1,8 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import styled, { createGlobalStyle } from 'styled-components';
-import { MDXProvider } from "@mdx-js/react"
+import { MDXProvider } from "@mdx-js/react";
+import { Speakerdeck } from "./Speakerdeck";
 
 const Global = createGlobalStyle`
   body {
@@ -48,7 +49,8 @@ const H3 = styled.p`
 
 const components = {
   p: H3,
-  YouTube
+  YouTube,
+  Speakerdeck
 };
 
 const Layout = ({ children }) => {
