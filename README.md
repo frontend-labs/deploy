@@ -28,6 +28,18 @@ Start the development server:
 make develop
 ```
 
+Create new post
+
+```
+make new.post name=my-name-post
+```
+
+This will create a new document in:
+
+```
+blog/2019-09-08-my-name-post/index.md
+```
+
 ### Build
 
 Compile your application and make it ready for deployment:
@@ -57,13 +69,11 @@ Install dependencies
 yarn install
 ```
 
-Start the development server:
+Start the development server
 
 ```
 yarn develop
 ```
-
-### Development
 
 Create new post
 
