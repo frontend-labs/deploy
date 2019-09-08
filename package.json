@@ -10,9 +10,11 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve -H 0.0.0.0",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
+    "new:post": "hygen blog new --name"
   },
   "dependencies": {
+    "@sindresorhus/slugify": "^0.9.1",
     "cross-env": "^5.2.1",
     "gatsby": "^2.15.9",
     "gatsby-plugin-draft": "^0.0.4",
