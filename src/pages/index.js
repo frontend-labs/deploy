@@ -8,7 +8,10 @@ export const query = graphql`
         title
       }
     },
-    allMarkdownRemark {
+    allMarkdownRemark(
+      filter: { fields: { draft: { eq: false } } }
+      sort: { order: ASC, fields: [ frontmatter___date]}
+    ) {
       edges {
         node {
           frontmatter {

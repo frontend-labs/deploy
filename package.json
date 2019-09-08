@@ -5,17 +5,20 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "cross-env NODE_ENV=production gatsby build",
+    "develop": "cross-env NODE_ENV=develop gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
   },
   "dependencies": {
+    "cross-env": "^5.2.1",
     "gatsby": "^2.15.9",
+    "gatsby-plugin-draft": "^0.0.4",
     "gatsby-source-filesystem": "2.1.21",
     "gatsby-transformer-remark": "2.6.21",
+    "hygen": "^4.0.9",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
