@@ -1,30 +1,25 @@
+WORKDIR = /app
 USER_ID=$(shell id -u)
 USER_GROUP=$(shell id -g)
 USER= $(USER_ID):$(USER_GROUP)
+DOCKER_IMAGE = node
 
-# Para generar un nuevo post
-# make new_post name="demo"
-new_post:
-	docker-compose run --rm --user ${USER} hugocker hugo new posts/${name}.md
+# Para instalar dependencias
+install:
+	docker run -i --rm -u $(USERID):$(USERID) -v $(PWD):/app -w $(WORKDIR) $(DOCKER_IMAGE) yarn
 
-# Para iniciar en local con propio config
+# Para iniciar en servidor de desarrollo
 # make server_local
-server_local: 
-	docker-compose run --publish 1313:1313 --rm --user ${USER} hugocker hugo server -D --bind=0.0.0.0 --config=config.local.toml
+develop: 
+	docker run -i --rm -u $(USERID):$(USERID) -p 8000:8000 -v $(PWD):/app -w $(WORKDIR) $(DOCKER_IMAGE) yarn develop
 
-# Para iniciar el server en local con posts públicos
+# Para iniciar el server en local modo produccion
 # make server
-server: 
-	docker-compose run --publish 1313:1313 --rm --user ${USER} hugocker hugo server --bind=0.0.0.0 --config=config.local.toml
-
-# Para generar los archivos estáticos con posts en draft
-# make build_draft
-build_draft:
-	rm -fr public
-	docker-compose run --rm --user ${USER} hugocker hugo -D -v --config=config.local.toml
+serve: 
+	docker run -i --rm -u $(USERID):$(USERID) -p 9000:9000 -v $(PWD):/app -w $(WORKDIR) $(DOCKER_IMAGE) yarn serve
 
 # Para generar los archivos estáticos con posts públicos
 # make build
 build:
 	rm -fr public
-	docker-compose run --rm --user ${USER} hugocker hugo -v
+	docker run -i --rm -u $(USERID):$(USERID) -v $(PWD):/app -w $(WORKDIR) $(DOCKER_IMAGE) yarn build
