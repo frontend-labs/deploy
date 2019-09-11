@@ -1,30 +1,26 @@
+WORKDIR = /app
 USER_ID=$(shell id -u)
 USER_GROUP=$(shell id -g)
 USER= $(USER_ID):$(USER_GROUP)
+DOCKER_IMAGE = node
 
-# Para generar un nuevo post
-# make new_post name="demo"
-new_post:
-	docker-compose run --rm --user ${USER} hugocker hugo new posts/${name}.md
+install: ## Para instalar dependencias: make install
+	docker run -i --rm -u $(USER) -v $(PWD):/app -w $(WORKDIR) $(DOCKER_IMAGE) yarn
 
-# Para iniciar en local con propio config
-# make server_local
-server_local: 
-	docker-compose run --publish 1313:1313 --rm --user ${USER} hugocker hugo server -D --bind=0.0.0.0 --config=config.local.toml
+develop: ## Para iniciar en servidor de desarrollo: make develop
+	docker run -i --rm -u $(USER) -p 8000:8000 -v $(PWD):/app -w $(WORKDIR) $(DOCKER_IMAGE) yarn develop
 
-# Para iniciar el server en local con posts públicos
-# make server
-server: 
-	docker-compose run --publish 1313:1313 --rm --user ${USER} hugocker hugo server --bind=0.0.0.0 --config=config.local.toml
+serve: ## Para iniciar el server en local modo produccion: make serve
+	docker run -i --rm -u $(USER) -p 9000:9000 -v $(PWD):/app -w $(WORKDIR) $(DOCKER_IMAGE) yarn serve
 
-# Para generar los archivos estáticos con posts en draft
-# make build_draft
-build_draft:
-	rm -fr public
-	docker-compose run --rm --user ${USER} hugocker hugo -D -v --config=config.local.toml
+build: ## Para generar los archivos estáticos con posts públicos: make build
+	rm -rf public
+	docker run -i --rm -u $(USER) -v $(PWD):/app -w $(WORKDIR) $(DOCKER_IMAGE) yarn build
 
-# Para generar los archivos estáticos con posts públicos
-# make build
-build:
-	rm -fr public
-	docker-compose run --rm --user ${USER} hugocker hugo -v
+new.post: ## Para crear un nuevo post: make new.post name=my-post-name
+	docker run -i --rm -u $(USER) -v $(PWD):/app -w $(WORKDIR) $(DOCKER_IMAGE) yarn new:post -- ${name}
+
+help:
+	@printf "\033[31m%-22s %-59s %s\033[0m\n" "Target" " Help" "Usage"; \
+	printf "\033[31m%-22s %-59s %s\033[0m\n"  "------" " ----" "-----"; \
+	grep -hE '^\S+:.*## .*$$' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' | sort | awk 'BEGIN {FS = ":"}; {printf "\033[32m%-22s\033[0m %-58s \033[34m%s\033[0m\n", $$1, $$2, $$3}'

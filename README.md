@@ -1,96 +1,102 @@
-# Deploy FrontEndlabs
+<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+<p align="center">
+  <a href="https://www.gatsbyjs.org">
+    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  </a>
+</p>
 
-En este repositorio se encuentra el código fuente y el sistema que genera el sitio **beta**
-de frontendlabs! :fire:
+## With Docker + Makefile
 
-## Herramientas
+### Requirements
 
-- Docker (17.x ó versión mas reciente)
+- Docker (version >= 17.x)
+- Git (version >= 2.x)
 
-- Git (2.x ó versión mas reciente)
+Once we have all the requirements to work
 
-- Docker compose (1.6.x ó versión mas reciente)
+### Development
 
-## Flujo de trabajo
-
-Es necesario ejecutar estos comandos dentro de la carpeta principal del repo, en este caso
-al clonarlo toma el nombre por defecto **deploy.frontendlabs.io**, entonces debo aplicar el comando en terminal:
-
-```
-cd deploy.frontendlabs.io
-```
-
-o verificar que estoy en esa carpeta ejecutando el comando:
+Install dependencies
 
 ```
-echo $PWD
+make install
 ```
 
-### Acciones con docker-compose
-
-Para crear un nuevo post realizo el siguiente comando:
+Start the development server:
 
 ```
-docker-compose run --rm --user $(id -u):$(id -g) hugocker hugo new posts/my-post-demo.md
+make develop
 ```
 
-Para visualizar el sitio en local con posts en borrador:
+Create new post
 
 ```
-docker-compose run --publish 1313:1313 --rm --user $(id -u):$(id -g) hugocker hugo server -D --bind=0.0.0.0
+make new.post name=my-name-post
 ```
 
-Para visualizar el sitio en local con posts públicos:
+This will create a new document in:
 
 ```
-docker-compose run --publish 1313:1313 --rm --user ${USER} hugocker hugo server --bind=0.0.0.0
+blog/2019-09-08-my-name-post/index.md
 ```
 
-Para generar los archivos estáticos con posts en draft
+### Build
 
-```
-rm -fr public
-docker-compose run --rm --user $(id -u):$(id -g) hugocker hugo -D -v
-```
-
-Para generar los archivos estáticos con posts públicos
-
-```
-rm -fr public
-docker-compose run --rm --user $(id -u):$(id -g) hugocker hugo -v
-```
-
-
-### Acciones con make
-
-Las acciones en docker-compose se facilitan a través de make:
-
-Para crear un nuevo post realizo el siguiente comando:
-
-```
-make new_post name="my-post-demo"
-```
-
-Para visualizar el sitio en local con posts en borrador:
-
-```
-make server_local
-```
-
-Para visualizar el sitio en local con posts públicos:
-
-```
-make server
-```
-
-Para generar los archivos estáticos con posts en draft
-
-```
-make build_draft
-```
-
-Para generar los archivos estáticos con posts públicos
-
+Compile your application and make it ready for deployment:
 ```
 make build
+```
+
+### Serve with production
+
+Serve the production build of your site for testing:
+```
+make serve
+```
+
+## With node in the system
+
+- Node (version >= 10.x)
+
+Once we have all the requirements to work
+
+
+### Development
+
+Install dependencies
+
+```
+yarn install
+```
+
+Start the development server
+
+```
+yarn develop
+```
+
+Create new post
+
+```
+yarn new:post -- my-name-post
+```
+
+This will create a new document in:
+
+```
+blog/2019-09-08-my-name-post/index.md
+```
+
+### Build
+
+Compile your application and make it ready for deployment:
+```
+yarn build
+```
+
+### Serve with production
+
+Serve the production build of your site for testing:
+```
+yarn serve
 ```
