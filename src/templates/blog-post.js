@@ -1,5 +1,7 @@
 import React from "react";
 import { graphql, Link } from 'gatsby';
+import Layout from '../components/Layout';
+import styled from 'styled-components';
 
 export const queryPosts = graphql`
   query($pathSlug: String!) {
@@ -13,6 +15,15 @@ export const queryPosts = graphql`
   }
 `;
 
+const NextPrevButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    color: #007acc;
+  }
+`;
+
 const Template = ({ data, pageContext }) => {
   console.log('pageContext', pageContext);
   const { prev, next } = pageContext;
@@ -22,14 +33,19 @@ const Template = ({ data, pageContext }) => {
   const date = markdownRemark.frontmatter.date;
   console.log('data', data);
   return(
-    <div>
-      Blog post here, return <Link to="/">here</Link>
-      <h1>{title}</h1>
-      <h3>{date}</h3>
+    <Layout>
+      <h3>{title}</h3>
+      <small>{date}</small>
       <div dangerouslySetInnerHTML={{ __html: html }} />
-      {prev && <Link to={prev.frontmatter.path}>prev post</Link>}
-      {next &&  <Link to={next.frontmatter.path}>next post</Link>}
-    </div>
+      <NextPrevButtons>
+        <div>
+          {prev && <Link to={prev.frontmatter.path}>← prev post</Link>}
+        </div>
+        <div>
+          {next &&  <Link to={next.frontmatter.path}>next post →</Link>}
+        </div>
+      </NextPrevButtons>
+    </Layout>
   )
 }
 

@@ -1,5 +1,7 @@
 import React from "react";
 import { graphql, Link  } from "gatsby";
+import styled, { createGlobalStyle } from 'styled-components';
+import Layout from '../components/Layout';
 
 export const query = graphql`
   query {
@@ -25,23 +27,38 @@ export const query = graphql`
   }
 `;
 
+const Article = styled.article`
+  margin: 20px 0;
+`;
+
+const Title = styled.h3`
+  margin: 20px 0 5px;
+  a {
+    color: #007acc;
+    text-decoration: none;
+  }
+`;
+
 export default ({ data }) => {
   const { allMarkdownRemark, site }= data;
   console.log('data Page', allMarkdownRemark);
   return(
-    <div>
-      <h1>{site.siteMetadata.title}</h1>
-      <h2>Posts:</h2>
+    <Layout>
       {allMarkdownRemark.edges.map(edge => {
         const { frontmatter } = edge.node;
         return(
-          <div key={frontmatter.path}>
-            <Link to={frontmatter.path}>
-              {frontmatter.title} - {frontmatter.date}
-            </Link>
-          </div>
+          <Article key={frontmatter.path}>
+            <Title>
+              <Link to={frontmatter.path}>
+                {frontmatter.title}
+              </Link>
+            </Title>
+            <small>
+              {frontmatter.date}
+            </small>
+          </Article>
         )
       })}
-    </div>
+    </Layout>
   )
 };
