@@ -1,21 +1,11 @@
-# https://gettingthingstech.com/how-to-deploy-a-hugo-site-to-digitalocean-automatically-with-wercker/
-# https://josephstahl.com/blog/2015/04/24/publishing-a-hugo-blog-to-digitalocean-with-wercker/
 box: node
 build:
   steps:
     - script:
-        name: 'update themes'
+        name: "yarn install"
         code: |
-            echo "THEMES!"
-            cd ${WERCKER_SOURCE_DIR}
-            git submodule update --init --recursive
-            git submodule update --recursive --remote
-            echo "must exists!!"
-            ls -R /pipeline/source/themes/
-    - arjen/hugo-build:
-        version: "0.55.6" 
-        theme: hyde
-        flags: --buildDrafts=false
+          yarn
+          yarn build
 deploy:
   steps:
     - install-packages:
