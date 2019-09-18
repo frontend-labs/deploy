@@ -1,25 +1,24 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import Layout from '../components/Layout';
 
 const SingleTagTemplate = ({ data, pageContext }) => {
   const { posts, tagName } = pageContext;
   return(
-    <div>
+    <Layout>
+      <h3>Posts acerca de {tagName}:</h3>
       <div>
-        Posts acerca de {tagName}:
-        <div>
-          <ul>
-            {posts.map((post, index) => (
-              <li key={index}>
-                <Link to={post.frontmatter.path}>
-                  {post.frontmatter.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul>
+          {posts.map((post, index) => (
+            <li key={index}>
+              <Link to={post.frontmatter.path}>
+                {post.frontmatter.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </Layout>
   )
 }
 
