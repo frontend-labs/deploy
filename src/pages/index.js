@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, Link  } from "gatsby";
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import Layout from '../components/Layout';
 
 export const query = graphql`
@@ -20,6 +20,7 @@ export const query = graphql`
             title
             path
             date(formatString: "MMMM DD, YYYY")
+            tags
           }
         }
       }
@@ -39,11 +40,27 @@ const Title = styled.h3`
   }
 `;
 
+const getTags = (posts) => {
+  const postsByTag = {};
+  posts.forEach(({ node }) => {
+    if(node.frontmatter.tags) {
+      node.frontmatter.tags.forEach(tag => {
+        if(!postsByTag[tag]) {
+          postsByTag[tag] = [];
+        }
+        postsByTag[tag].push(node);
+      })
+    }
+  });
+  return Object.keys(postsByTag).sort();
+}
 export default ({ data }) => {
   const { allMarkdownRemark, site }= data;
-  console.log('data Page', allMarkdownRemark);
+  const tags = getTags(allMarkdownRemark.edges);
   return(
     <Layout>
+      <h2>Post recientes:</h2>
+      <hr />
       {allMarkdownRemark.edges.map(edge => {
         const { frontmatter } = edge.node;
         return(
@@ -59,6 +76,17 @@ export default ({ data }) => {
           </Article>
         )
       })}
+      <h2>Tags:</h2>
+      <hr />
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        {tags.map((tagName, index) => (
+          <li key={index}>
+            <Link to={`tag/${tagName}`}>
+              #{tagName}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </Layout>
   )
 };
