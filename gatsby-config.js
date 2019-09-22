@@ -13,7 +13,6 @@ module.exports = {
     author: 'root'
   },
   plugins: [
-    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -22,10 +21,16 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        extensions: ['.mdx', '.md']
+      }
+    },
+    {
       resolve: 'gatsby-plugin-draft',
       options: {
         publishDraft: isProd
       }
-    }
+    },
   ]
 }

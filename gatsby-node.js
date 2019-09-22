@@ -1,7 +1,6 @@
 const path = require('path');
 
 const createTagPage = (createPage, posts) => {
-  const allTagsIndexTemplate = path.resolve('src/templates/AllTags.js');
   const singleTagIndexTemplate = path.resolve('src/templates/SingleTag.js');
 
   const postsByTag = {};
@@ -39,15 +38,13 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           query {
-            allMarkdownRemark(
-              filter: { fields: { draft: { eq: false } } }
-              sort: { order: ASC, fields: [ frontmatter___date]}
-            ) {
+            allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
               edges {
                 node {
                   frontmatter {
-                    path,
-                    title,
+                    date(formatString: "MMMM DD, YYYY")
+                    title
+                    path
                     tags
                   }
                 }
@@ -56,7 +53,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         `
       ).then(result => {
-        const posts = result.data.allMarkdownRemark.edges;
+        const posts = result.data.allMdx.edges;
         createTagPage(createPage, posts);
         posts.forEach(({ node }, index) => {
           const path = node.frontmatter.path;
