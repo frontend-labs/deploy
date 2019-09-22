@@ -2,14 +2,24 @@ import React from "react";
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import styled from 'styled-components';
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 export const queryPosts = graphql`
   query($pathSlug: String!) {
-    markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
-      html
+    site {
+      siteMetadata {
+        title
+        author
+      }
+    }
+    mdx(frontmatter: {path: {eq: $pathSlug}}) {
+      id
+      body
       frontmatter {
-        title,
         date(formatString: "MMMM DD, YYYY")
+        tags
+        path
+        title
       }
     }
   }
@@ -25,18 +35,15 @@ const NextPrevButtons = styled.div`
 `;
 
 const Template = ({ data, pageContext }) => {
-  console.log('pageContext', pageContext);
+  const { body, frontmatter } = data.mdx;
   const { prev, next } = pageContext;
-  const { markdownRemark } = data;
-  const html = markdownRemark.html;
-  const title = markdownRemark.frontmatter.title;
-  const date = markdownRemark.frontmatter.date;
-  console.log('data', data);
+  const title = frontmatter.title;
+  const date = frontmatter.date;
   return(
     <Layout>
       <h3>{title}</h3>
       <small>{date}</small>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <MDXRenderer>{body}</MDXRenderer>
       <NextPrevButtons>
         <div>
           {prev && <Link to={prev.frontmatter.path}>← prev post</Link>}

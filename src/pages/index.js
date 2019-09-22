@@ -10,16 +10,13 @@ export const query = graphql`
         title
       }
     },
-    allMarkdownRemark(
-      filter: { fields: { draft: { eq: false } } }
-      sort: { order: ASC, fields: [ frontmatter___date]}
-    ) {
+    allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
       edges {
         node {
           frontmatter {
+            date(formatString: "MMMM DD, YYYY")
             title
             path
-            date(formatString: "MMMM DD, YYYY")
             tags
           }
         }
@@ -55,13 +52,14 @@ const getTags = (posts) => {
   return Object.keys(postsByTag).sort();
 }
 export default ({ data }) => {
-  const { allMarkdownRemark, site }= data;
-  const tags = getTags(allMarkdownRemark.edges);
+  const { allMdx }= data;
+  const tags = getTags(allMdx.edges);
+  console.log('data', data);
   return(
     <Layout>
       <h2>Post recientes:</h2>
       <hr />
-      {allMarkdownRemark.edges.map(edge => {
+      {allMdx.edges.map(edge => {
         const { frontmatter } = edge.node;
         return(
           <Article key={frontmatter.path}>

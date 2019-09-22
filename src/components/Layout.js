@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import styled, { createGlobalStyle } from 'styled-components';
+import { MDXProvider } from "@mdx-js/react"
 
 const Global = createGlobalStyle`
   body {
@@ -38,6 +39,18 @@ export const query = graphql`
     }
   }
 `;
+
+const YouTube = ({ id }) => <div>Shortcodes YouTube {id} !!</div>;
+
+const H3 = styled.p`
+  color: orange;
+`;
+
+const components = {
+  p: H3,
+  YouTube
+};
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(query);
   const { title } = data.site.siteMetadata;
@@ -52,7 +65,7 @@ const Layout = ({ children }) => {
         </h1>
       </Header>
       <Box>
-        {children}
+        <MDXProvider components={components}>{children}</MDXProvider>
       </Box>
     </React.Fragment>
   )
