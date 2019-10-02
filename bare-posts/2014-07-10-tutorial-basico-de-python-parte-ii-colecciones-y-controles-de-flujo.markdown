@@ -5,23 +5,21 @@ date: 2014-07-10 05:43:14+00:00
 layout: post
 link: https://frontendlabs.io/1162--tutorial-basico-de-python-parte-ii-colecciones-y-controles-de-flujo
 slug: tutorial-basico-de-python-parte-ii-colecciones-y-controles-de-flujo
-title: 'Tutorial Básico de Python – Parte II : Colecciones y Controles de Flujo'
+title: "Tutorial Básico de Python – Parte II : Colecciones y Controles de Flujo"
 wordpress_id: 1162
 categories:
-- Python
+  - Python
 tags:
-- Código
-- Debian
-- Lenguaje de programación
-- Linux
-- Tutorial
+  - Código
+  - Debian
+  - Lenguaje de programación
+  - Linux
+  - Tutorial
 ---
 
 En la [primera parte de este tutorial](https://frontendlabs.io/1122--tutorial-basico-de-python-i) aprendimos los operadores y los tipos básicos que existen en python.  Ahora en esta segunda parte aprenderemos las colecciones (listas, tuplas y  diccionarios) y los controles de flujo (condicionales y bucles).
 
-
 ### Colecciones
-
 
 **Listas**
 
@@ -30,49 +28,67 @@ Las listas es una colección ordenada de elementos. Esta lista no restricciona e
 Las listas son representadas con corchetes '[..]'.  No es necesario indicar sus indices ya que este se hace de manera automática.
 
 [sourcecode language="python"]
+
 # Primera manera de declarar una lista
+
 primera_lista = list()
 
 # Otra manera de declarar una lista
+
 segunda_lista = ['x', 'y', 'z']
 
 # Tercera manera de declarar una lista
+
 tercera_lista = []
 
 # Agregar valores a la lista
+
 primera_lista.append('a')
 primera_lista.append('b')
 primera_lista.append('c')
 primera_lista.append('d')
 primera_lista.append('e')
 print primera_lista
+
 # ['a', 'b', 'c', 'd', 'e']
 
 # Seleccionar un elemento de la lista
+
 print primera_lista[0]
+
 # 'a'
 
 # Seleccionar varios elementos de una lista
+
 print primera_lista[2:]
+
 # ['c', 'd', 'e']
 
 # Seleccionar un rango de elementos de una lista
+
 print primera_lista[1:3]
+
 # ['b', 'c']
 
 # Eliminar un elemento de la lista
+
 del primera_lista[4]
 print primera_lista
+
 # print ['a', 'b', 'c', 'd']
 
 #Otra manera de eliminar un elemento
 primera_lista.remove('d')
 print primera_lista
+
 # print ['a', 'b', 'c']
 
 # Obtener el indice de un elemento
+
 primera_lista.index('b')
+
 # 1
+
 [/sourcecode]
 
 **Tuplas**
@@ -80,25 +96,33 @@ primera_lista.index('b')
 Es muy similar a las listas sin embargo en este tipo de colección no se permite editar la coleccion despues de haber sido creado. Esto puede servir mucho cuando uno crea un archivo de configuración y desea que este no se vea alterado en un futuro ya que podría corromper al programa. Ademas las tuplas son mas ligeras y por ende mas rápidas que los diccionarios o listas.
 
 [sourcecode language="python"]
+
 # Primera manera de declarar una tupla
+
 primera_tupla = ('a', 'b', 'c', 'd', 'e')
 
 # Segunda manera de declarar una tupla
+
 primera_tupla = 'a', 'b', 'c', 'd', 'e'
 
-# Como es una tupla, y esta es inmutable no tiene los atributos remove ni append (osea no se puede eliminar sus items ni agregarse). 
+# Como es una tupla, y esta es inmutable no tiene los atributos remove ni append (osea no se puede eliminar sus items ni agregarse).
 
 # Sin embargo si podemos seleccionar uno o varios elementos por su indice o viceversa
+
 print primera_tupla[0]
+
 # 'a'
 
 print primera_tupla[1:2]
+
 # ('b',)
 
 print primera_tupla[0:2]
+
 # ('a', 'b')
 
 print primera_tupla[0:2]
+
 # ('a', 'b')
 
 [/sourcecode]
@@ -108,37 +132,47 @@ Si se preguntan porque al escribir primera_tupla[1:2] obtengo como resultado "('
 **Diccionarios**
 
 [sourcecode language="python"]
+
 # Primera manera de declarar un diccionario
-primer_diccionario =  dict()
+
+primer_diccionario = dict()
 
 # Segunda manera de declarar un diccionario
+
 segundo_diccionario = {'key_1': 'valor_1','key_2': 'valor_2','key_3': 'valor_3','key_4': 'valor_4'}
 
 # Tercera manera de declarar un diccionario
+
 tercer_diccionario = {}
 
 # Agregar nuevo valor al diccionario
+
 primer_diccionario['otro_key'] = 'otro_valor'
 print primer_diccionario
+
 # {'otro_diccionario': 'otro_valor'}
 
 # Mostrar el valor del diccionario
+
 print primer_diccionario['otro_key']
+
 # 'otro valor'
 
 # Eliminar un valor del diccionario
+
 del primer_diccionario['otro_key']
 print primer_diccionario
+
 # {}
+
 [/sourcecode]
 
 A diferencia de las dos anteriores este tipo de colección si nos permite asignar nuestras propias llaves al item.
 
-
 ### Condicionales
 
-
 Para comenzar con las condicionales primero debemos entender tanto los operadores como las comparaciones que se usan con los valores booleanos.
+
 <table >
 
 <tr >
@@ -250,22 +284,19 @@ Ejemplo
 </tbody>
 </table>
 
-
 #### if
-
 
 Es la condición mas simple que tiene el repertorio de Python.
 
 [sourcecode language="python"]
 if 1==1:
-    print '¡python es genial!'
+print '¡python es genial!'
 [/sourcecode]
-
 
 [sourcecode language="python"]
 web='frontendlabs.io'
 if web=='frontendlabs.io':
-    print '¡frontend-labs es genial!'
+print '¡frontend-labs es genial!'
 [/sourcecode]
 
 ** if ... else**
@@ -275,9 +306,9 @@ Esta condición indica que si no se cumple la condición del **if** pues se real
 [sourcecode language="python"]
 condicion_a = True
 if condicion_a is True:
-    print 'accion a'
+print 'accion a'
 else:
-    print 'accion b'
+print 'accion b'
 [/sourcecode]
 
 ** if ... elif...else**
@@ -290,13 +321,13 @@ condicion_b = False
 condicion_c = True
 
 if condicion_a is True:
-    print 'accion a'
+print 'accion a'
 elif condicion_b is True:
-    print 'accion b'
+print 'accion b'
 elif condicion_c is True:
-    print 'accion_c'
+print 'accion_c'
 else:
-    print 'accion d'
+print 'accion d'
 [/sourcecode]
 
 **Otras maneras de validar**
@@ -316,10 +347,7 @@ print ejemplo_2
 
 [/sourcecode]
 
-
-
 ### Bucles
-
 
 Los bucles repiten un pedazo de código hasta que cierta condición se cumple. Tenemos dos tipos de bucles **for** y **while**.
 
@@ -330,7 +358,7 @@ Este bucle recorre una colección de elementos. Usualmente el bucle **for** es
 [sourcecode language="python"]
 frameworks = ['django', 'easy-test-selenium', 'scrapy']
 for framework in frameworks:
-    print framework
+print framework
 #django
 #easy-test-selenium
 #scrapy
@@ -344,8 +372,8 @@ Ejecuta un fragmento de código mientras la condición de esta se cumpla.
 horas = 0
 #Imprime las horas hasta que llegue a 24
 while horas < 24:
-    horas += 1
-    print 'Ha transcurrido ' + str(horas) + ' hora(s)'
+horas += 1
+print 'Ha transcurrido ' + str(horas) + ' hora(s)'
 [/sourcecode]
 
 Esto ha sido todo hasta en este turial de python - colecciones y controles de flujo. Si desean saber mas sobre el tema pueden visitar la [documentación oficial](https://docs.python.org/2.7/tutorial/controlflow.html) de python. [Para el próximo tutorial hablaremos de funciones.](https://frontendlabs.io/1257--tutorial-basico-de-python-parte-iii-funciones)

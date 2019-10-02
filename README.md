@@ -43,6 +43,7 @@ blog/2019-09-08-my-name-post/index.md
 ### Build
 
 Compile your application and make it ready for deployment:
+
 ```
 make build
 ```
@@ -50,6 +51,7 @@ make build
 ### Serve with production
 
 Serve the production build of your site for testing:
+
 ```
 make serve
 ```
@@ -59,7 +61,6 @@ make serve
 - Node (version >= 10.x)
 
 Once we have all the requirements to work
-
 
 ### Development
 
@@ -90,6 +91,7 @@ blog/2019-09-08-my-name-post/index.md
 ### Build
 
 Compile your application and make it ready for deployment:
+
 ```
 yarn build
 ```
@@ -97,6 +99,7 @@ yarn build
 ### Serve with production
 
 Serve the production build of your site for testing:
+
 ```
 yarn serve
 ```

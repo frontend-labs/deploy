@@ -5,18 +5,18 @@ date: 2014-07-26 06:14:36+00:00
 layout: post
 link: https://frontendlabs.io/1490--json-que-es-json-parse-json-stringify
 slug: json-que-es-json-parse-json-stringify
-title: 'JSON: ¿Qué es JSON?, ¿Cómo se usa? y ¿Para qué sirve JSON?'
+title: "JSON: ¿Qué es JSON?, ¿Cómo se usa? y ¿Para qué sirve JSON?"
 wordpress_id: 1490
 categories:
-- Javascript
+  - Javascript
 tags:
-- Código
-- ECMAScript
-- Estándar
-- Javascript
-- jQuery
-- json
-- Sintaxis
+  - Código
+  - ECMAScript
+  - Estándar
+  - Javascript
+  - jQuery
+  - json
+  - Sintaxis
 ---
 
 **JSON** es un formato de texto para la serialización de datos estructurados.
@@ -27,23 +27,15 @@ JSON puede representar** cuatro tipos primitivos**(cadenas, números, booleanos,
 
 **En JSON:**
 
+- **Una Cadena** es una secuencia de ceros o más caracteres Unicode.
 
+* **Un Objeto** es una colección desordenada de cero o más pares **nombre:valor**, donde un **nombre **es una cadena y un **valor** es una cadena, número, booleano, nulo, objeto o arreglo.
 
-  
-  * **Una Cadena** es una secuencia de ceros o más caracteres Unicode.
-
-  
-  * **Un Objeto** es una colección desordenada de cero o más pares **nombre:valor**, donde un **nombre **es una cadena y un **valor** es una cadena, número, booleano, nulo, objeto o arreglo.
-
-  
-  * **Un Arreglo** es una secuencia desordenada de ceros o más valores.
-
+- **Un Arreglo** es una secuencia desordenada de ceros o más valores.
 
 Los objetivos del diseño de JSON fueron que sea pequeño, portátil, textual y derivado de JavaScript.
 
-
 ### Diferencias entre JavaScript y JSON
-
 
 <table >
 
@@ -80,9 +72,7 @@ Los objetivos del diseño de JSON fueron que sea pequeño, portátil, textual y
 </tbody>
 </table>
 
-
 ### Demostrando lo anterior
-
 
 Los nombres de propiedades(claves) deben ser cadenas entre **comillas dobles**:
 
@@ -107,25 +97,15 @@ Como podemos ver, cuando deserializamos(usamos JSON.parse) el contenido de la va
 
 Pero cuando intentamos **evaluar**(eval) el contenido de la variable textoJson como Javascript, obtenemos un error de Sintaxis.
 
-
 # El objeto JSON nativo
-
 
 Es un objeto Javascript nativo que contiene métodos para la creación y manipulación de objetos JSON. Si bien es cierto este objeto es nativo, pero no tiene soporte en navegadores antiguos.
 
-
-
 ### Métodos
-
-
 
 El objeto JSON nativo incluye dos métodos principales.
 
-
-
 ## JSON.parse(text[, reviver ])
-
-
 
 El método JSON.parse() recibe una cadena JSON y en base a esta cadena construye un objeto JavaScript.
 
@@ -135,28 +115,17 @@ Si la función retorna undefined, la propiedad se elimina del objeto.
 
 Cuando el resucitador termina de iterar realiza una última confirmación, en esta envía una **clave vacía**("") y como **valor** pone el nuevo objeto creado en base a las modificaciones que hicimos, entonces allí es cuando podemos hacerle una última modificación a todo el objeto o simplemente retornarlo.
 
-
 ### Uso de JSON.parse()
-
 
 Uso simple para convertir una cadena de texto JSON a un objeto Javascript:
 
-
-    
-    
     <code>
     var objetoJson = JSON.parse('{"clave":"valor"}');
     console.log(objetoJson.clave); // logs "valor"
     </code>
-    
-
-
 
 Uso completo(usando el parámetro **reviver**):
 
-
-    
-    
     <code>
     var textoJson = '{"usb" : 20, "mouse" : 30, "mousepad": 10}',
     precioConIgv = function(producto, precio){
@@ -171,19 +140,12 @@ Uso completo(usando el parámetro **reviver**):
     objetoJson = JSON.parse(textoJson, precioConIgv);
     console.log(objetoJson); // logs Object {usb: 23.6, mouse: 35.4}
     </code>
-    
-
-
 
 Hemos utilizado la función precioConIgv como **reviver**, allí le indicamos que a los precios actuales les agregue un 18% más y adicionalmente no deseamos que registre el producto **mousepad** en nuestro nuevo objeto.
 
 Y vemos finalmente el uso del condicional if (producto === "") donde le indicamos que luego de haber terminado con todos los productos nos devuelva el **nuevo objeto**, que en ese momento se encuentra contenido en la variable precio.
 
-
-
 ## JSON.stringify(value [ , replacer [ , space ] ])
-
-
 
 El método JSON.stringify() recibe un **objeto JavaScript** y devuelve su **JSON** equivalente y puede tomar hasta tres parámetros.
 
@@ -197,49 +159,30 @@ El **parámetro opcional space** es una cadena o número usado para insertar car
 
 Si no se proporciona este parámetro (o es nulo), no se utiliza ningún espacio en blanco.
 
-
-
 ### Uso de JSON.stringify()
-
-
 
 Uso simple para convertir un objeto Javascript a una cadena de texto JSON:
 
-
-    
-    
     <code>
     var objetoJavascript = {"clave" : "valor"},
     textoJson = JSON.stringify(objetoJavascript);
-    
+
     console.log(typeof textoJson); // logs "string"
     console.log(textoJson); // logs {"clave":"valor"}
     </code>
-    
-
-
 
 Uso de un Arreglo como parámetro **replacer** para convertir un objeto Javascript a una cadena de texto JSON:
 
-
-    
-    
     <code>
     var objetoJavascript = {"hora": 11, "dia": 1, "mes": 7, "año": 2014},
         textoJson = JSON.stringify(objetoJavascript , ["mes", "año"]);
         console.log(textoJson); // logs '{"año" : 2014, "mes": 7}'
     </code>
-    
-
-
 
 En el código anterior podemos ver que al colocar como segundo parámetro ["mes", "año"] realizó un filtro de datos.
 
 Uso de una función como parámetro **replacer** para convertir un objeto Javascript a una cadena de texto JSON:
 
-
-    
-    
     <code>
     var filtro = function (clave, valor) {
       if (clave === "hora") {
@@ -247,7 +190,7 @@ Uso de una función como parámetro **replacer** para convertir un objeto Javasc
       }
       return valor;
     }
-    
+
     var objetoJavascript = {"hora": 11, "dia": 1, "mes": 7, "año": 2014},
         textoJson = JSON.stringify(objetoJavascript , filtro, 4);
         console.log(textoJson);
@@ -260,23 +203,15 @@ Uso de una función como parámetro **replacer** para convertir un objeto Javasc
         }
         */
     </code>
-    
-
-
 
 En el ejemplo anterior usamos la función filtro para retirar la clave **hora** de nuestra cadena de texto JSON resultante.
 
 Adicionalmente el resultado esta tabulado ya que en el tercer parámetro le indicamos que deseamos que delante de cada registro coloque 4 espacios en blanco, esto gracias al parámetro space.
 
-
 ### Polyfill
-
 
 El objeto JSON no viene incluido en los navegadores más antiguos. Pero esto se puede solucionar insertando el siguiente código al inicio de todos tus scripts, con el cual permitirás el uso del objeto JSON en las implementaciones que no lo soportan de forma nativa (como Internet Explorer 6).
 
-
-    
-    
     <code>
     if (!window.JSON) {
       window.JSON = {
@@ -301,15 +236,10 @@ El objeto JSON no viene incluido en los navegadores más antiguos. Pero esto se 
       };
     }
     </code>
-    
-
-
 
 Existen Polyfills conocidos para el objeto JSON, por ejemplo [JSON2](https://github.com/douglascrockford/JSON-js) y [JSON3](http://bestiejs.github.com/json3).
 
-
 ### Compatibilidad con navegadores
-
 
 <table >
 
@@ -342,43 +272,23 @@ Existen Polyfills conocidos para el objeto JSON, por ejemplo [JSON2](https://git
 </tbody>
 </table>
 
-
 ### JSON y jQuery
-
 
 jQuery tiene implementada la función jQuery.parseJSON() Sin embargo, esta función realiza comprobaciones adicionales, innecesarias que también se llevan a cabo por JSON.parse() por lo cual por un tema de rendimiento es recomendable usar JSON.parse en lugar de jQuery.parseJSON(), sin embargo si quieres utilizar el soporte de jQuery en navegadores que no tengan esta característica de forma nativa puedes realizar el siguiente código:
 
-
-    
-    
     <code>
     var textoJson = '{"clave" : "valor"}',
         nuevoObjeto = JSON && JSON.parse(textoJson) || $.parseJSON(textoJson);
     </code>
-    
 
-
-
-De esta forma cuando tengas soporte nativo lo usarás por defecto, de lo contrario usarás la función $.parseJSON() de jQuery.
-
+De esta forma cuando tengas soporte nativo lo usarás por defecto, de lo contrario usarás la función \$.parseJSON() de jQuery.
 
 ### Herramientas Online
 
+- [JSON Parser Online](http://json.parser.online.fr/) (visor).
 
+* [JSON Editor Online](http://www.jsoneditoronline.org/) (visor).
 
+- [JSON Formatter & Validator](http://jsonformatter.curiousconcept.com/) (validador).
 
-
-  
-  * [JSON Parser Online](http://json.parser.online.fr/) (visor).
-
-  
-  * [JSON Editor Online](http://www.jsoneditoronline.org/) (visor).
-
-  
-  * [JSON Formatter & Validator](http://jsonformatter.curiousconcept.com/) (validador).
-
-  
-  * [JS Beautifier](http://jsbeautifier.org/) (JS, HTML y JSON legible).
-
-
-
+* [JS Beautifier](http://jsbeautifier.org/) (JS, HTML y JSON legible).
