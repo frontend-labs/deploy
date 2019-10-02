@@ -8,35 +8,29 @@ slug: aprender-expresiones-regulares-en-espanol-videotutorial-parte-1
 title: Aprende Expresiones Regulares en español (videoTutorial) - Parte 1
 wordpress_id: 1621
 categories:
-- tutorial
+  - tutorial
 tags:
-- Código
-- Expresiones regulares
-- Javascript
+  - Código
+  - Expresiones regulares
+  - Javascript
 ---
 
 Muchas veces nos encontramos con situaciones en donde se tiene que validar un campo o hacer un filtro con expresiones regulares y otras situaciones como:
 
+- Validar un campo que sólo ingrese números.
 
+- Validar un correo
 
-	
-  * Validar un campo que sólo ingrese números.
+- Realizar filtros de búsquedas
 
-	
-  * Validar un correo
-
-	
-  * Realizar filtros de búsquedas
-
-	
-  * etc ..
-
+- etc ..
 
 Y lo que comúnmente se hace es buscar la expresiones regulares, copiarlas y pegarlas en nuestro código, dejando de lado lo que significan esos misteriosos símbolos que están en la expresión regular.
 
 En esta oportunidad aprenderemos por medio de un video-tutorial lo que son estos símbolos en las expresiones regulares y de cómo entenderlas.
 
 Las expresiones regulares que serán explicadas en el video, se detallan a continuación:
+
 <table width="790" style="height: 177px;" class="cheatsheet" >
 <tbody >
 <tr >
@@ -93,15 +87,9 @@ Expresiones Regulares
 </tbody>
 </table>
 
-
-
 ## Métodos javascript donde se usa expresiones regulares
 
-
-
-
 ### Test :
-
 
 Función para revisar si la cadena cumple o no con la expresión regular.
 
@@ -112,10 +100,7 @@ console.log(/o/g.test(str));
 [/code]
 Explicación: Evalua en toda la cadena si contiene o no la letra o
 
-
-
 ### Replace :
-
 
 Función para reemplazar en la cadena lo que buscamos por un expresión regular y luego reemplazarla.
 
@@ -126,32 +111,24 @@ console.log(str.replace(/buenos/g,’malos’));
 [/code]
 Explicación: Reemplaza en la cadena la palabra buenos por malos
 
-
-
 ### Split :
-
 
 Función para dividir una cadena según la expresión regular que indiquemos.
 
 [code lang="javascript"]
 var str = 'los buenos tacos son opacos';
 console.log(str.split(/ /g));
-//[“los”,“buenos”,“tacos”, “son”,”opacos”]
-[/code]
+//[“los”,“buenos”,“tacos”, “son”,”opacos”][/code]
 Explicación: Divide la cadena cada vez que se encuentre un espacio en blanco
 
-
-
 ### Match :
-
 
 Función para buscar en una cadena por medio de una expresión regular.
 
 [code lang="javascript"]
 var str = 'los buenos tacos son opacos';
 console.log(str.match(/o/g));
-//["o", "o", "o", "o", "o", "o"] 
-[/code]
+//["o", "o", "o", "o", "o", "o"][/code]
 Explicación: Busca en la cadena todas las letras o
 
 **Más adelante seguiremos explicando sobre este tema**

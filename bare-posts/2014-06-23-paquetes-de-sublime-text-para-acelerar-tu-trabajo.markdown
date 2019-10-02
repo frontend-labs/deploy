@@ -8,12 +8,12 @@ slug: paquetes-de-sublime-text-para-acelerar-tu-trabajo
 title: Paquetes de Sublime Text para acelerar tu trabajo
 wordpress_id: 985
 categories:
-- Automatización
-- Código
+  - Automatización
+  - Código
 tags:
-- Código
-- Editores de texto
-- sublime text
+  - Código
+  - Editores de texto
+  - sublime text
 ---
 
 Sublime Text es uno de los editores de código más rápidos que ha surgido en los últimos años. Cuenta con una gran comunidad  que produce muchos paquetes (o plugins) para acelerar el desarrollo de nuestros proyectos. Soporta las plataformas de OS X, Linux y Windows.
@@ -22,9 +22,7 @@ Si aún no estás utilizando Sublime Text puedes encontrar más información y 
 
 (Actualizado el 18 de junio de 2015)
 
-
 # Atajos de teclado
-
 
 Todas las combinaciones de teclado que vienen por defecto con Sublime se encuentran en el menú Preferences -> Key Binding - Default
 
@@ -39,9 +37,7 @@ Para editar o agregar algún atajo tendremos que ubicar y copiar la parte de có
 
 Otra de las funciones ocultas y que ahorra tiempo es el de copiar una línea de código. No necesitamos seleccionar toda la línea, simplemente ubicar el cursor en cualquier parte de ésta y pulsar "ctrl+c".
 
-
 # Paquetes
-
 
 Para poder instalar paquetes necesitas instalar el "Package control", sólo tienes que copiar un bloque de código en la consola de Sublime (menú View -> Show console). Entra a [este link](https://packagecontrol.io/installation) para las instrucciones.
 
@@ -85,15 +81,11 @@ Busca diferencias entre dos archivos, resaltando los cambios y líneas con color
 
 ![](http://www.sublimerge.com/Images/sublimerge-pro-linux.png)
 
-
-
 [SetUI Icons Sublime](https://github.com/mrmartineau/SetiUI-Icons-Sublime)
 
 Estos iconos fueron inspirados en el tema [set-ui de Atom](https://atom.io/themes/seti-ui) y ahora se puede usar con Sublime text y cualquier tema que nos guste funciona mejor con los temas oscuros como Theme Soda). Puedes ver las instrucciones para instalar en su [repositorio](https://github.com/mrmartineau/SetiUI-Icons-Sublime)
 
 ![](http://i.imgur.com/39O7rUY.jpg)
-
-
 
 [HaoGist](https://github.com/xjsender/HaoGist)
 
@@ -101,9 +93,7 @@ Este plugin es particularmente útil si es que buscas subir archivos de código 
 
 ![](http://i.imgur.com/mq6lSC3.jpg)
 
-
 # Temas
-
 
 [Theme - Nil](https://github.com/nilium/st2-nil-theme)
 

@@ -8,15 +8,15 @@ slug: css-diagramacion-de-formularios-flexibles
 title: CSS Diagramación de Formularios Flexibles
 wordpress_id: 407
 categories:
-- Css
-- Diseño
-- Html
+  - Css
+  - Diseño
+  - Html
 tags:
-- CSS3
-- HTML5
-- Less
-- Sass
-- Stylus
+  - CSS3
+  - HTML5
+  - Less
+  - Sass
+  - Stylus
 ---
 
 La idea aquí es tener una estructura de formulario (_HTML_) el cual a base de "**clases**" declaradas en nuestra hoja de estilos **Css** se ajuste a nuestras necesidades y/o requerimientos, cambiando así su presentación visual. En este post aprenderemos a como obtener 3 diferentes diagramaciones de formularios sin alterar la maquetación html, uds pueden hacer infinidad de cosas con los estilos como cambiarle: colores, tamaños, posiciones, vista según dispositivos y/o desktop; por ahora solo veremos este diseño, lo demás queda a su imaginación :)
@@ -46,8 +46,6 @@ form(action="POST", class="frm_validate lesslabel", id="frmValidate", name="frmV
 [/code]
 
 [![Form sin label](https://frontendlabs.io/wp-content/uploads/2014/04/Captura-de-pantalla-2014-05-05-a-las-18.05.28.png)](https://frontendlabs.io/wp-content/uploads/2014/04/Captura-de-pantalla-2014-05-05-a-las-18.05.28.png)
-
-
 
 2. Declaramos nuestros atributos Css ([stylus](http://learnboost.github.io/stylus/)), tanto para la clase por default que vendría a ser "**frm_validate**" como las otras dos ya mencionadas donde cambiamos la diagramación y diseño del formulario recordemos que todos los atributos de elementos se pueden modificar anidando a clases padres que vendría a ser "**vertical**" o "**lesslabel**" :
 
@@ -100,8 +98,6 @@ form(action="POST", class="frm_validate lesslabel", id="frmValidate", name="frmV
 
 [/code]
 
-
-
 3. Para nuestros "**label**" e "**input**" ,
 
 [code lang="ruby"]
@@ -118,7 +114,7 @@ Las clases(_stylus_) que también usaremos son "**form_control**" :
 
 .form_control
   margin-bottom 15px
-  *zoom 1
+  \*zoom 1
   &:before,&:after
     display table
     content ""
@@ -168,8 +164,6 @@ Las clases(_stylus_) que también usaremos son "**form_control**" :
 
 [/code]
 
-
-
 4. Veamos cómo funciona cada estilo:
 
 "**frm_validate**" : este viene a ser a lo que llamo una clase **padre**, donde puedo anidar todas las clases que se me ocurra para obtener resultados diferentes visualmente.
@@ -178,15 +172,9 @@ Las clases(_stylus_) que también usaremos son "**form_control**" :
 
 Nota: para muchos quizás sea nuevo ver en los estilos estos símbolos "**&.nombredeclase** y/o **&:before, &:after**" , eso lo usamos cuando queremos anidar clases obteniendo así una clase padre. Más información [aquí](http://learnboost.github.io/stylus/).
 
-
-
 5. Para entenderlo mejor veamos [aquí](http://codepen.io/xiocaro/pen/ljEhk?editors=110).
 
-
 See the Pen [Css Diagramación Formularios](http://codepen.io/xiocaro/pen/ljEhk/) by Xio ([@xiocaro](http://codepen.io/xiocaro)) on [CodePen](http://codepen.io).
-
-
-
 
 [![Formulario](https://frontendlabs.io/wp-content/uploads/2014/04/final.png)](http://xiocaro.com/demo/form/)
 

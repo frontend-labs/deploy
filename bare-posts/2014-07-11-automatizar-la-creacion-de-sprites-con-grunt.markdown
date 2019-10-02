@@ -5,32 +5,28 @@ date: 2014-07-11 20:47:13+00:00
 layout: post
 link: https://frontendlabs.io/889--automatizar-la-creacion-de-sprites-con-grunt
 slug: automatizar-la-creacion-de-sprites-con-grunt
-title: 'Automatizar la creación de sprites con Grunt '
+title: "Automatizar la creación de sprites con Grunt "
 wordpress_id: 889
 categories:
-- Automatización
-- Css
+  - Automatización
+  - Css
 tags:
-- Automatización
-- Código
-- CSS3
-- Grunt
-- HTML5
-- Nodejs
-- Stylus
+  - Automatización
+  - Código
+  - CSS3
+  - Grunt
+  - HTML5
+  - Nodejs
+  - Stylus
 ---
 
 ## ¿Por qué usar sprites en nuestro proyecto?
-
-
 
 Si combinamos varias imágenes pequeñas en una grande, el navegador requerirá menos conexiones al servidor, se ahorran bytes en cada petición y dependiendo del nivel de optimización del sprite, esto puede llevarnos a ahorrar una gran cantidad de ancho de banda.
 
 Este es el sprite que utiliza [Pinterest](http://pinterest.com).
 
 ![webapp-desktop-main-1x.356df158](https://frontendlabs.io/wp-content/uploads/2014/06/webapp-desktop-main-1x.356df158.png)
-
-
 
 Imaginemos que necesitamos agregar una nueva imagen en ese sprite y reordenar las otras que se encuentran alrededor, tendríamos que recalcular las posiciones de los estilos para cada imagen en nuestra hoja de estilos...
 
@@ -48,12 +44,12 @@ El contenido de package.json es el siguiente:
 
 [code lang="javascript"]
 {
- "name": "mi-proyecto",
- "version": "0.1.0",
- "devDependencies": {
- "grunt": "~0.4.5",
- "grunt-spritesmith": "^2.1.0"
- }
+"name": "mi-proyecto",
+"version": "0.1.0",
+"devDependencies": {
+"grunt": "~0.4.5",
+"grunt-spritesmith": "^2.1.0"
+}
 }
 [/code]
 
@@ -62,19 +58,19 @@ y el de Gruntfile.js es:
 [code lang="javascript"]
 
 module.exports = function(grunt) {
-  grunt.initConfig({
-    sprite:{
-      all: {
-        src: 'img/sprites/*.png',
-        destImg: 'img/spritesheet.png',
-        destCSS: 'css/sprites.css',
-        algorithm: 'binary-tree'
-      }
-    }
-  });
+grunt.initConfig({
+sprite:{
+all: {
+src: 'img/sprites/\*.png',
+destImg: 'img/spritesheet.png',
+destCSS: 'css/sprites.css',
+algorithm: 'binary-tree'
+}
+}
+});
 
-  // Cargar tarea
-  grunt.loadNpmTasks('grunt-spritesmith');
+// Cargar tarea
+grunt.loadNpmTasks('grunt-spritesmith');
 };
 
 [/code]
@@ -107,61 +103,59 @@ Esto creará el archivo spritesheet.png y sprites.css en las rutas especificadas
 Los estilos generados y listos para usar se encontrarán en sprite.css
 
 [code lang="css"]
-/*
+/\*
 Icon classes can be used entirely standalone. They are named after their original file names.
 
 ```html
 <i class="icon-home"></i>
 ```
-*/
+
+\*/
 .icon-ico_alert {
-  background-image: url(../img/spritesheet.png);
-  background-position: -93px 0px;
-  width: 21px;
-  height: 18px;
+background-image: url(../img/spritesheet.png);
+background-position: -93px 0px;
+width: 21px;
+height: 18px;
 }
 .icon-ico_check {
-  background-image: url(../img/spritesheet.png);
-  background-position: 0px 0px;
-  width: 65px;
-  height: 60px;
+background-image: url(../img/spritesheet.png);
+background-position: 0px 0px;
+width: 65px;
+height: 60px;
 }
 .icon-ico_fb {
-  background-image: url(../img/spritesheet.png);
-  background-position: -65px 0px;
-  width: 28px;
-  height: 28px;
+background-image: url(../img/spritesheet.png);
+background-position: -65px 0px;
+width: 28px;
+height: 28px;
 }
 .icon-ico_google {
-  background-image: url(../img/spritesheet.png);
-  background-position: -65px -28px;
-  width: 28px;
-  height: 28px;
+background-image: url(../img/spritesheet.png);
+background-position: -65px -28px;
+width: 28px;
+height: 28px;
 }
 .icon-ico_mail {
-  background-image: url(../img/spritesheet.png);
-  background-position: 0px -60px;
-  width: 28px;
-  height: 28px;
+background-image: url(../img/spritesheet.png);
+background-position: 0px -60px;
+width: 28px;
+height: 28px;
 }
 .icon-ico_time {
-  background-image: url(../img/spritesheet.png);
-  background-position: -28px -60px;
-  width: 28px;
-  height: 28px;
+background-image: url(../img/spritesheet.png);
+background-position: -28px -60px;
+width: 28px;
+height: 28px;
 }
 .icon-ico_twitter {
-  background-image: url(../img/spritesheet.png);
-  background-position: -56px -60px;
-  width: 28px;
-  height: 28px;
+background-image: url(../img/spritesheet.png);
+background-position: -56px -60px;
+width: 28px;
+height: 28px;
 }
 [/code]
 
-
-
 ## ¿Utilizas Preprocesadores?
-
 
 Tenemos también la opción de generar nuestros estilos en distintos formatos (CSS, SASS, SCSS, LESS, Stylus).
 
@@ -178,19 +172,19 @@ Eso creará un conjunto de mixins en sprites.styl con todas las variables necesa
 
 [code lang="javascript"]
 .icoFacebook
-  sprite($ico_fb) // el nombre de la imagen es el mismo "ico_fb.png"
-  display: inline-block
+sprite(\$ico_fb) // el nombre de la imagen es el mismo "ico_fb.png"
+display: inline-block
 [/code]
 
 Lo cual compila en css a:
 
 [code lang="css"]
 .icoFacebook {
-  background-image: url("../img/spritesheet.png");
-  background-position: -65px 0px;
-  width: 28px;
-  height: 28px;
-  display: inline-block;
+background-image: url("../img/spritesheet.png");
+background-position: -65px 0px;
+width: 28px;
+height: 28px;
+display: inline-block;
 }
 [/code]
 

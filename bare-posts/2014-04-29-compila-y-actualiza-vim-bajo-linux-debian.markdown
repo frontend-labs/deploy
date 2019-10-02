@@ -8,12 +8,12 @@ slug: compila-y-actualiza-vim-bajo-linux-debian
 title: Compila y actualiza vim bajo linux/debian
 wordpress_id: 615
 categories:
-- Linux
-- Vim
+  - Linux
+  - Vim
 tags:
-- Debian
-- Editores de texto
-- Linux
+  - Debian
+  - Editores de texto
+  - Linux
 ---
 
 Hola, les traigo este fabuloso articulo traído desde mi [blog](http://http://blogdeandru.blogspot.com/), pero esta vez con un dato adicional, pues quieren saber de qué?
@@ -30,49 +30,46 @@ Nota: Estoy bajo una distribución de linux/debian que se llama crunchbang y los
 1. Nos ubicamos en el Home( o simbolo ~) para hacer lo necesario, e instalamos las dependencias:
 
 [code lang="bash"]
-$ sudo apt-get install ncurses-dev build-essential mercurial
+\$ sudo apt-get install ncurses-dev build-essential mercurial
 [/code]
 
 2. Para tener en claro el repositorio de vim (donde está su código fuente) está bajo el sistema de versionamiento llamado mercurial y es por eso que realizamos esas descargas, pero hacemos la descarga de otros paquetes adicionales para el soporte de clipboard para vim, sin estos no podrían funcionar bien para cuando se usa el portapapeles del sistema:
 
 [code lang="bash"]
-$ sudo apt-get install libx11-dev libxtst-dev xorg-dev
+\$ sudo apt-get install libx11-dev libxtst-dev xorg-dev
 [/code]
 
 3. Ahora viene lo bueno, que es hacer un clon del repositorio de vim en nuestra Home
 
 [code lang="bash"]
-~ $ hg clone https://bitbucket.org/vim-mirror/vim vim 
+~ \$ hg clone https://bitbucket.org/vim-mirror/vim vim 
 [/code]
 
 4. Luego de que nos tome unos minutos de haber descargado nos genera una carpeta llamada vim, ingresamos a la carpeta hija llamada src
 
 [code lang="bash"]
-~ $ cd vim/src
+~ \$ cd vim/src
 [/code]
 
 5. Una vez estando en esa carpeta hacemos una limpieza de la configuración predeterminada para compilar el codigo.
 
 [code lang="bash"]
-~/vim/src $ make distclean
+~/vim/src \$ make distclean
 [/code]
 
-6.  Esta línea de comando le indicamos a la configuración por defecto las cosas adicionales que tenga y generamos nuestro ejecutable:
+6.  Esta línea de comando le indicamos a la configuración por defecto las cosas adicionales que tenga y generamos nuestro ejecutable:
 
 [code lang="bash"]
-~/vim/src $ ./configure --with-features=huge --enable-pythoninterp --enable-rubyinterp --with-x --enable-gui
+~/vim/src \$ ./configure --with-features=huge --enable-pythoninterp --enable-rubyinterp --with-x --enable-gui
 [/code]
 
 7. Como punto final ejecutamos lo generado.
 
 [code lang="bash"]
-~/vim/src $ sudo make install
+~/vim/src \$ sudo make install
 [/code]
 
 Como punto opcional ejecutamos esta linea para muchos casos poder actualizar la referencia que pudo haber tenido el editor o se haya instalado otro anteriormente
-
-
-
 
 [code lang="bash"]
 ~/vim/src $ export PATH=/usr/local/bin:$PATH
@@ -84,7 +81,7 @@ Como punto opcional ejecutamos esta linea para muchos casos poder actualizar la 
 8. Nos ubicamos en la carpeta vim que se clonó
 
 [code lang="bash"]
-~ $ cd vim
+~ \$ cd vim
 [/code]
 
 9. Traemos los últimos cambios con estos comandos
@@ -100,15 +97,7 @@ Nota adicional:
 Si quieres saber la última vez que haz compilado tu editor solo escribes en el terminal lo siguiente
 
 [code lang="bash"]
-~ $ vim --version
+~ \$ vim --version
 [/code]
 
-
-    
     Suerte en la compilación :D
-
-
-
-
-
-

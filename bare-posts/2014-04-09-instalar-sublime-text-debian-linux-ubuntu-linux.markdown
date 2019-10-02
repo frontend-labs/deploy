@@ -8,20 +8,20 @@ slug: instalar-sublime-text-debian-linux-ubuntu-linux
 title: Como instalar Sublime Text 2 en Debian Linux
 wordpress_id: 340
 categories:
-- Linux
+  - Linux
 tags:
-- crunchbang
-- Debian
-- elementary os
-- freya
-- Linux
-- luna
-- mint
-- Nodejs
-- Package Control
-- sublime text
-- Tutorial
-- Ubuntu
+  - crunchbang
+  - Debian
+  - elementary os
+  - freya
+  - Linux
+  - luna
+  - mint
+  - Nodejs
+  - Package Control
+  - sublime text
+  - Tutorial
+  - Ubuntu
 ---
 
 Sublime Text es un **editor de texto** sofisticado para **código**, **marcado**(markup) y **mucho más**. Te encantará su elegante interfaz de usuario, sus extraordinarias características  y su sorprendente rendimiento.
@@ -32,11 +32,7 @@ Si deseas saber más sobre este muy buen editor puedes visitar [su sitio web](ht
 
 Si tienes **Debian Linux**, Ubuntu Linux, Elementary OS Freya Linux o cualquier linux basado en Debian y deseas instalarlo, entonces manos a la obra!.
 
-
-
 ## Como instalar Sublime Text 2
-
-
 
 Nuestro primer paso será descargar la última versión estable de Sublime Text por lo cual nos dirigiremos al siguiente enlace: [SublimeText 2](http://www.sublimetext.com/2) y a continuación tendremos la siguiente vista.
 
@@ -46,150 +42,90 @@ La página de Sublime Text nos indicará la versión ideal para nuestro **Siste
 
 Al completar la descarga tendremos el siguiente archivo: **Sublime Text 2.0.2 x64.tar.bz2** en nuestra carpeta local: **downloads**, así que ingresamos a ella con el siguiente comando:
 
-
-    
-    
     <code>
     cd ~/downloads
     </code>
-    
-
-
 
 **Descomprimimos** el archivo descargado.
 
-
-    
-    
     <code>
     tar -jvxf Sublime\ Text\ 2.0.2\ x64.tar.bz2
     </code>
-    
 
+Y luego **movemos** la carpeta Sublime Text 2 dentro de la carpeta **/opt/**
 
-
- Y luego **movemos** la carpeta Sublime Text 2 dentro de la carpeta **/opt/**
-
-
-    
-    
     <code>
     sudo mv Sublime\ Text\ 2 /opt/
     </code>
-    
-
-
 
 Creamos un **enlace simbólico** del ejecutable **sublime_text** dentro de la carpeta **/usr/bin**
 
-
-    
-    
     <code>
     sudo ln -s /opt/Sublime\ Text\ 2/sublime_text /usr/bin/sublime
     </code>
-    
-
-
-
 
 Ahora escribimos **"sublime"** en nuestro terminal.
 
-
-    
-    
     <code>
     sublime
     </code>
-    
-
-
 
 Con esto se abrirá por primera vez nuestro nuevo editor.
 
 Ahora creamos un lanzador, dentro de la carpeta **/usr/share/applications**
 
-
-    
-    
     <code>
     sudo sublime /usr/share/applications/sublime.desktop
     </code>
-    
-
-
 
 Se abrirá nuestro editor, agregaremos el siguiente código, guardamos los cambios y cerramos nuestro Sublime Text 2.
 
-
-    
-    
     <code>
     [Desktop Entry]
     Version=2.0.2
     Name=Sublime Text 2
     GenericName=Text Editor
-    
+
     Exec=sublime
     Terminal=false
     Icon=/opt/Sublime Text 2/Icon/48x48/sublime_text.png
     Type=Application
     Categories=TextEditor;IDE;Development
     X-Ayatana-Desktop-Shortcuts=NewWindow
-    
+
     [NewWindow Shortcut Group]
     Name=New Window
     Exec=sublime -n
     TargetEnvironment=Unity
     </code>
-    
-
-
 
 Y con esto hemos terminado de instalar completamente Sublime Text 2.
 
-
-
-
 ## Como instalar paquetes de Sublime Text 2
-
-
 
 Ingresamos a nuestro terminal y escribimos lo siguiente
 
-
-    
-    
     <code>
     cd ~/downloads
     </code>
-    
 
 
 
 
 
 
-    
-    
+
+
+
     <code>
     wget -v https://packagecontrol.io/Package\ Control.sublime-package
     </code>
-    
-
-
 
 Con esto hemos ingresado a la carpeta **~/downloads** y hemos descargado el **Administrador de paquetes** de Sublime Text 2, ahora moveremos el Administrador de paquetes a su ruta correspondiente.
 
-
-    
-    
     <code>
     mv Package\ Control.sublime-package ~/.config/sublime-text-2/Installed\ Packages/
     </code>
-    
-
-
 
 Con esto hemos instalado el Administrador de paquetes de Sublime Text 2 y vamos a probarlo instalando los paquetes para Jade, Stylus y CoffeeScript. Para esto abrimos nuestro sublime y presionamos la combinación de teclas **Ctrl + Shift + p** y a continuación nos mostrará la siguiente vista, en la cual escribiremos **install package** y presionaremos la tecla Enter.
 ![install_packages](https://frontendlabs.io/wp-content/uploads/2014/04/install_packages.png)

@@ -8,14 +8,14 @@ slug: jade-language-node-template-engine-and-html-preprocessor
 title: Jade Language - Motor de plantillas para nodeJS y Preprocesador HTML
 wordpress_id: 70
 categories:
-- Preprocesadores
+  - Preprocesadores
 tags:
-- Jade
-- Javascript
-- Lenguaje de programación
-- Nodejs
-- Stylus
-- Template engine
+  - Jade
+  - Javascript
+  - Lenguaje de programación
+  - Nodejs
+  - Stylus
+  - Template engine
 ---
 
 Jade es un motor de plantillas de alto rendimiento muy influenciado por **HAML**, ha sido implementado con [**Javascript**](https://frontendlabs.io/tag/javascript/) para trabajar con [NodeJS](https://frontendlabs.io/tag/nodejs/).
@@ -23,8 +23,6 @@ Jade es un motor de plantillas de alto rendimiento muy influenciado por **HAML**
 Adicionalmente es un pre-procesador de código [HTML](https://frontendlabs.io/tag/html/).
 
 Los dejo con una presentación que hice hace algún tiempo sobre Jade, el código de los ejemplos lo puedes encontrar en este [repositorio en github](https://github.com/jansanchez/jade-examples).
-
-
 
 Si estás interesado en aprender más sobre Jade, esta web te servirá mucho [learnjade.com](http://www.learnjade.com/)
 

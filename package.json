@@ -11,7 +11,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve -H 0.0.0.0",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
-    "new:post": "hygen blog new --name"
+    "new:post": "hygen blog new --name",
+    "format:md": "npx prettier '**/*.{markdown,md}' --write"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.4.5",

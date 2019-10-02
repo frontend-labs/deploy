@@ -8,25 +8,22 @@ slug: open-graph-protocol
 title: ¿Qué es el Open Graph Protocol?
 wordpress_id: 1956
 categories:
-- Html
-- SEO
+  - Html
+  - SEO
 tags:
-- Facebook's Debugger
-- Metadata
-- Open Graph Protocol
-- Social Graph
+  - Facebook's Debugger
+  - Metadata
+  - Open Graph Protocol
+  - Social Graph
 ---
 
 ## Open Graph Protocol
-
 
 El **Open Graph Protocol **es un método simple que nos permite incluir meta información en nuestra página web y así convertirla en un objeto **Social Graph**, una vez siendo un objeto puede interactuar con otros objetos **Social Graph** como el share de Google+ o el like de Facebook de modo correcto.
 
 Una manera sencilla de entenderlo es pensar que cuando uno se registra en Facebook nos estamos convirtiendo en un objeto **Social Graph **( sí, somos objetos :( ) pasamos a formar parte de un mapa global de conexiones sociales, en este mapa ( o universo paralelo ) no interactuas con saludos o regalos, sino con likes o share; entonces, activando el **Open Graph Protocol** en nuestra web la convertimos en un objeto **Social Graph** manipulable.
 
-
 ## Metadata básica
-
 
 Para activar el Open Graph en nuestra web debemos de agregar los metadatos básicos dentro del **<head></head>** de nuestra web, las 4 propiedades requeridas para cualquier página son:
 
@@ -35,7 +32,6 @@ Para activar el Open Graph en nuestra web debemos de agregar los metadatos bási
 **og:image** : Una URL que apunte a la imagen que representará a tu objeto.
 **og:url** :  La URL canónica de tu objeto que será el ID permanente del objeto; ejemplo, "https://frontendlabs.io/" .
 
-    
     <!DOCTYPE html>
     <html prefix="og: http://ogp.me/ns#">
     <head>
@@ -46,16 +42,11 @@ Para activar el Open Graph en nuestra web debemos de agregar los metadatos bási
     	<meta property="og:url" content="https://frontendlabs.io/" />
     </head>
     <body>
-    
+
     </body>
     </html>
-    
-
-
-
 
 ## Metadata Opcional
-
 
 **og:description** : Algunas líneas descriptivas para el objeto. Por buena practica no debemos de usar más de 200 caracteres.
 **og:locale** : Declaramos el lugar de procedencia del objeto en el formato lenguaje_TERRITORIO; ejemplo, "es_PE".
@@ -63,37 +54,26 @@ Para activar el Open Graph en nuestra web debemos de agregar los metadatos bási
 **og:audio** : La URL del audio que acompaña este objeto.
 **og:video** : La URL del video que complementa el objeto creado.
 
-    
     <meta property="og:description" content="Open Graph Protocol, mapa global de conexiones sociales" />
     <meta property="og:locale" content="es_PE" />
     <meta property="og:site_name" content="frontend-labs" />
     <meta property="og:audio" content="http://example.com/og/theme.mp3" />
     <meta property="og:video" content="http://example.com/og/trailer.swf" />
-    
-
-
-
 
 ## extras
 
-
 También pueden incluir más de una imagen o más de un lenguaje usando [arrays](http://ogp.me/#array)
 
-    
     <meta property="og:image" content="https://frontendlabs.io/frontend-labs-facebook_01.png" />
     <meta property="og:image" content="https://frontendlabs.io/frontend-labs-facebook_02.png" />
     <meta property="og:image" content="https://frontendlabs.io/frontend-labs-facebook_03.png" />
-    
+
     <meta property="og:locale:alternate" content="fr_FR" />
     <meta property="og:locale:alternate" content="en_EN" />
-    
-
 
 Si necesitas más detalles sobre ésto solo debes de ingresar a la [documentación oficial](http://ogp.me/).
 
-
 ## Debugger
-
 
 Para saber si lo estamos haciendo bien o mal, o donde podemos hacer mejoras, Facebook pone a nuestra disposición una herramienta de [Debugger](https://developers.facebook.com/tools/debug/)
 

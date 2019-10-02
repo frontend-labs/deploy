@@ -5,23 +5,21 @@ date: 2014-06-20 20:49:46+00:00
 layout: post
 link: https://frontendlabs.io/887--pruebas-funcionales-con-python-y-selenium
 slug: pruebas-funcionales-con-python-y-selenium
-title: 'Selenium para las Pruebas Funcionales con Python  '
+title: "Selenium para las Pruebas Funcionales con Python  "
 wordpress_id: 887
 categories:
-- Automatización
-- Python
+  - Automatización
+  - Python
 tags:
-- Automatización
-- Código
-- Pruebas funcionales
-- Python
+  - Automatización
+  - Código
+  - Pruebas funcionales
+  - Python
 ---
 
 En términos simples, las pruebas funcionales se encargan de constatar que la funcionalidad del sistema este de acuerdo a lo solicitado. Estas pruebas son conocidas también como pruebas de caja negra, ya que solo se encargan de verificar que todo funcione bien sin importar el código detrás de este. Para dichas pruebas tenemos diversas herramientas y una de estas es Selenium.
 
-
 ## ¿Qué es Selenium y cómo instalarlo?
-
 
 Selenium automatiza los pasos que uno hace en los navegadores. Por ejemplo, Selenium puede guardar un script con los pasos que uno realiza en un registro de usuario y luego usarlo para repetir dichos pasos las veces que se desee  en el navegador que se desee de manera automática.
 
@@ -31,17 +29,13 @@ Si has hecho clic en el addon y también en la opción "allow/permitir" que apar
 
 [![1 instalar selenium](https://frontendlabs.io/wp-content/uploads/2014/06/1_instalar_selenium.png)](https://frontendlabs.io/wp-content/uploads/2014/06/1_instalar_selenium.png)
 
-
-
 Luego de la instalación, un icono aparecerá al lado derecho del navegador que dice 'Se' en color blanco.
 
 [![2 instalar selenium](https://frontendlabs.io/wp-content//uploads/2014/06/2_instalar_selenium-e1403219799269.png)](https://frontendlabs.io/wp-content/uploads/2014/06/2_instalar_selenium-e1403219799269.png)
 
 Finalmente, si logran visualizar este icono la instalación de Selenium IDE ha sido exitosa.
 
-
 ## ¿Como usar Selenium IDE?
-
 
 En primer lugar, debes dirigirte a la página web que quieras automatizar. Luego, se hace clic en el icono de Selenium IDE y aparecerá un cuadro como el que se muestra a continuación el cual ya se encuentra capturando las acciones que realices en la pagina seleccionada.
 
@@ -53,11 +47,7 @@ A continuación, se debe empezar a realizar las acciones que se  desee registra
 
 Podemos observar que se ha registrado las acciones realizadas en la página. Ahora hacemos clic en el circulo rojo para detener la grabación y guardamos la prueba funcional realizada.
 
-
-
-
 ## ¿Cómo se usa Python con Selenium?
-
 
 En caso que no conozcan mucho de python pueden revisar el[ tutorial básico de python](https://frontendlabs.io/1122--tutorial-basico-de-python-i).
 
@@ -77,15 +67,16 @@ Luego de tener nuestro script, el siguiente paso es reutilizarlo y en base a es
 Para agilizar el proceso de creación de registros a ser probados dentro del formulario se puede utilizar la siguiente clase.
 
 [sourcecode language="python"]
-# -*- coding: utf-8 -*-
+
+# -_- coding: utf-8 -_-
 
 class CreateForm():
-    def __init__(self, fields):
-        self.fields = dict()
-        self.fields['is_error'] = False
-        for key in fields.keys():
-            self.fields[key] = fields[key]
-        self.errors = list()
+def **init**(self, fields):
+self.fields = dict()
+self.fields['is_error'] = False
+for key in fields.keys():
+self.fields[key] = fields[key]
+self.errors = list()
 
     def addError(self, item, message, value):
         assert item in self.fields.keys(), "The item '%s' was not found in key's dict" % item
@@ -109,31 +100,36 @@ class CreateForm():
             registers.append(register)
             c += 1
         return registers
+
 [/sourcecode]
 
-La clase se debe guardar con el nombre de **form_test.py.** Luego creamos otro archivo con el nombre de **form_keys****.py **en el cual se ingresará los id's de los campos del formulario.
+La clase se debe guardar con el nombre de **form_test.py.** Luego creamos otro archivo con el nombre de **form_keys\*\***.py \*\*en el cual se ingresará los id's de los campos del formulario.
 
 [sourcecode language="python"]
-# -*- coding: utf-8 -*-
 
-FIELD_NAME        = 'txtName'
-FIELD_LASTNAME    = 'txtLastName'
-FIELD_EMAIL       = 'txtEmail'
-FIELD_PASSWORD    = 'txtPassword1'
-FIELD_CONFIRM     = 'txtRepeatPassword'
-FIELD_DOCUMENT    = 'txtDocument'
-SELECT_DOCUMENT   = 'selDocument'
-SUBMIT_REGISTER   = 'sbmRegister'
+# -_- coding: utf-8 -_-
+
+FIELD_NAME = 'txtName'
+FIELD_LASTNAME = 'txtLastName'
+FIELD_EMAIL = 'txtEmail'
+FIELD_PASSWORD = 'txtPassword1'
+FIELD_CONFIRM = 'txtRepeatPassword'
+FIELD_DOCUMENT = 'txtDocument'
+SELECT_DOCUMENT = 'selDocument'
+SUBMIT_REGISTER = 'sbmRegister'
 [/sourcecode]
 
 Ahora creamos el archivo **form_input_data.py** en el cual registraremos los valores por defecto que tendrá el formulario y los errores que se van a verificar.
 
 [sourcecode language="python"]
-# -*- coding: utf-8 -*-
-from form_keys import *
+
+# -_- coding: utf-8 -_-
+
+from form_keys import \*
 from form_test import CreateForm
 
 # Declaro mensajes a repetirse
+
 MESSAGE_REQUIRED = u'Este campo es requerido.'
 MESSAGE_MAX = u'La longitud máxima es de %d caracteres.'
 MESSAGE_MIN = u'La longitud mínima es de %d caracteres.'
@@ -141,6 +137,7 @@ MESSAGE_ONLY_NUMBERS = u'Ingrese solo números.'
 MESSAGE_BAD_NAME = u'Solo letras, espacios y guiones (-)'
 
 # Registramos los valores por defecto que tendra el formulario, cuando el campo sea un select le asignamos un diccionario como valor
+
 default = dict()
 default[FIELD_NAME] = 'Nombre de Prueba'
 default[FIELD_LASTNAME] = 'Apellido de prueba'
@@ -150,14 +147,18 @@ default[FIELD_CONFIRM] = 'probando123'
 default[FIELD_DOCUMENT] = {'DNI':'54264895','RUC':'254152458963','Pasaporte':'4587DA45','Carné de Extranjería':'584E4E5D5'}
 
 # Declaramos los errores
+
 # item : campo a ser testeado
+
 # message : el mensaje de error que deberia mostrar
+
 # value : el valor erroneo a ser ingresado
+
 txtNameBadSpell = {'item': FIELD_NAME, 'message': MESSAGE_BAD_NAME, 'value': u'FULAN0000'}
 txtNameMinCharacters = {'item': FIELD_NAME, 'message': MESSAGE_MIN % 2, 'value': 'C'}
 txtNameRequired = {'item': FIELD_NAME, 'message': MESSAGE_REQUIRED, 'value': ''}
 
-txtLastNameBadSpell = {'item': FIELD_LASTNAME, 'message': MESSAGE_BAD_NAME, 'value': u'PEP3$$$$'}
+txtLastNameBadSpell = {'item': FIELD_LASTNAME, 'message': MESSAGE_BAD_NAME, 'value': u'PEP3\$\$\$\$'}
 txtLastNameMinCharacters = {'item': FIELD_LASTNAME, 'message': MESSAGE_MIN % 2, 'value': 'C'}
 txtLastNameRequired = {'item': FIELD_LASTNAME, 'message': MESSAGE_REQUIRED, 'value': ''}
 
@@ -168,6 +169,7 @@ txtDocumentDniMin = {'item': FIELD_DOCUMENT, 'message': u'El DNI debe ser de 8 d
 txtDocumentRucMin = {'item': FIELD_DOCUMENT, 'message': u'El RUC debe ser de 11 dígitos', 'value': {'RUC': '12857'} }
 
 # Registramos los errores
+
 register = CreateForm(default)
 register.addError(**txtNameBadSpell)
 register.addError(**txtNameMinCharacters)
@@ -187,41 +189,43 @@ El archivo obtenido por Selenium será editado manualmente. Se insertará un for
 
 [sourcecode language="python"]
 for data in register.getList():
-    print u'--> Probando la prueba: %s ' % data['cod']
-    driver.find_element_by_id(FIELD_NAME).clear()
-    driver.find_element_by_id(FIELD_NAME).send_keys(data[FIELD_NAME])
-    self.printText( 'nombre ingresado')
+print u'--> Probando la prueba: %s ' % data['cod']
+driver.find_element_by_id(FIELD_NAME).clear()
+driver.find_element_by_id(FIELD_NAME).send_keys(data[FIELD_NAME])
+self.printText( 'nombre ingresado')
 [/sourcecode]
 
 Al finalizar el for se agregará el **assert **el cual tiene como función comprobar que el error mostrado es el indicado.
 
 [sourcecode language="python"]
 if data['is_error']:
-    driver.find_element_by_id(SUBMIT_REGISTER).click()
-    error_id = driver.find_element_by_id(data['error']['location']).get_attribute('data-parsley-id')
-    message = driver.find_element_by_css_selector('#parsley-id-%s > li' % error_id).text
-    assert data['error']['message'] == message, u'Mensaje erroneo en la prueba: %s , %s == %s' % (data['cod'], data['error']['message'], message)
-    print u'--> Exito en %s el campo %s dio como mensaje %s al ingresar %s' % (data['cod'], data['error']['location'], data['error']['message'], data['error']['value'])
+driver.find_element_by_id(SUBMIT_REGISTER).click()
+error_id = driver.find_element_by_id(data['error']['location']).get_attribute('data-parsley-id')
+message = driver.find_element_by_css_selector('#parsley-id-%s > li' % error_id).text
+assert data['error']['message'] == message, u'Mensaje erroneo en la prueba: %s , %s == %s' % (data['cod'], data['error']['message'], message)
+print u'--> Exito en %s el campo %s dio como mensaje %s al ingresar %s' % (data['cod'], data['error']['location'], data['error']['message'], data['error']['value'])
 [/sourcecode]
 
 Finalmente, nuestro archivo **test_case.py** deberia quedar algo asi.
 
 [sourcecode language="python"]
-# -*- coding: utf-8 -*-
+
+# -_- coding: utf-8 -_-
+
 from form_input_data import register
 from selenium import webdriver
-from form_keys import *
+from form_keys import \*
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
 import unittest
 
 class PruebasDeRegistro(unittest.TestCase):
-    def setUp(self):
-        self.driver = webdriver.Firefox()
-        self.base_url = "http://paginadeprueba.pe/registro"
-        self.verificationErrors = []
-        self.accept_next_alert = False
-        self.debug = False
+def setUp(self):
+self.driver = webdriver.Firefox()
+self.base_url = "http://paginadeprueba.pe/registro"
+self.verificationErrors = []
+self.accept_next_alert = False
+self.debug = False
 
     def printText(self, text):
         if self.debug:
@@ -290,8 +294,8 @@ class PruebasDeRegistro(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+if **name** == "**main**":
+unittest.main()
 [/sourcecode]
 
 El esquema explicado aquí sirve mas que nada para probar si el formulario muestra el mensaje de error correspondiente al valor ingresado. Sin embargo, Selenium sirve para validar diversos flujos que tiene un sistema web.
