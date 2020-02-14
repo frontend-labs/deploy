@@ -9,7 +9,7 @@
     "develop": "cross-env NODE_ENV=develop gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve -H 0.0.0.0",
+    "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
     "new:post": "hygen blog new --name",
     "format:md": "npx prettier '**/*.{markdown,md}' --write"
@@ -27,9 +27,11 @@
     "hygen": "^4.0.9",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.7",
+    "gatsby-plugin-styled-components": "^3.1.19",
     "prettier": "^1.18.2"
   },
   "repository": {

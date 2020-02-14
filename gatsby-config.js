@@ -13,6 +13,7 @@ module.exports = {
     author: 'root'
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
