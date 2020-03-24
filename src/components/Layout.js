@@ -3,6 +3,8 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import styled, { createGlobalStyle } from 'styled-components';
 import { MDXProvider } from "@mdx-js/react";
 import { Speakerdeck } from "./Speakerdeck";
+import { WritePost, Footer  } from '@frontendlabs/ui';
+import './layout.css';
 
 const Global = createGlobalStyle`
   body {
@@ -12,17 +14,20 @@ const Global = createGlobalStyle`
 `;
 
 const Box = styled.div`
-  width: 960px;
+  width: 1068px;
   margin: 0 auto;
 `;
 
 const Header = styled.div`
-  padding: 20px;
-  background-color: #3a26a7;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background-color: #312359;
+  padding: 0 20px;
   h1 {
+    font-size: 20px;
     padding: 0;
-    width: 960px;
-    margin: 0 auto;
+    margin: 0;
     color: white;
     a {
       color: white;
@@ -43,12 +48,17 @@ export const query = graphql`
 
 const YouTube = ({ id }) => <div>Shortcodes YouTube {id} !!</div>;
 
-const H3 = styled.p`
-  color: orange;
+const p = styled.p`
+  color: black;
+`;
+
+const a = styled.a`
+  color: black;
 `;
 
 const components = {
-  p: H3,
+  p: p,
+  a: a,
   YouTube,
   Speakerdeck
 };
@@ -69,6 +79,8 @@ const Layout = ({ children }) => {
       <Box>
         <MDXProvider components={components}>{children}</MDXProvider>
       </Box>
+      <WritePost />
+      <Footer />
     </React.Fragment>
   )
 };
