@@ -35,24 +35,23 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const blogPostTemplate = path.resolve('src/templates/blog-post.js');
     resolve(
-      graphql(
-        `
-          query {
-            allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
-              edges {
-                node {
-                  frontmatter {
-                    date(formatString: "MMMM DD, YYYY")
-                    title
-                    path
-                    tags
-                  }
+      graphql(`
+        query {
+          allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
+            edges {
+              node {
+                frontmatter {
+                  date(formatString: "MMMM DD, YYYY")
+                  title
+                  path
+                  tags
+                  author
                 }
               }
             }
           }
-        `
-      ).then(result => {
+        }
+      `).then(result => {
         const posts = result.data.allMdx.edges;
         createTagPage(createPage, posts);
         posts.forEach(({ node }, index) => {

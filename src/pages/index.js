@@ -1,40 +1,30 @@
 import React from "react";
-import { graphql, Link  } from "gatsby";
+import { graphql, Link } from "gatsby";
 import styled from 'styled-components';
 import Layout from '../components/Layout';
+import { Card, Tag, CardWrapper } from '@frontendlabs/ui';
 
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    },
-    allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
-      edges {
-        node {
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            path
-            tags
-          }
-        }
-      }
-    }
+const Wrapper = styled.div`
+  box-sizing: border-box;
+  margin: 30px 0;
+  background-color: #312359;
+  padding-top: 30px;
+  text-align: center;
+  h2 {
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: white;
   }
+  border-radius: 10px;
 `;
 
-const Article = styled.article`
-  margin: 20px 0;
-`;
-
-const Title = styled.h3`
-  margin: 20px 0 5px;
-  a {
-    color: #007acc;
-    text-decoration: none;
-  }
+const CategoriesWrapper = styled.div`
+  box-sizing: border-box;
+  background-color: #21173E;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 40px 20px 26px;
 `;
 
 const getTags = (posts) => {
@@ -57,34 +47,61 @@ export default ({ data }) => {
   console.log('data', data);
   return(
     <Layout>
-      <h2>Post recientes:</h2>
-      <hr />
-      {allMdx.edges.map(edge => {
-        const { frontmatter } = edge.node;
-        return(
-          <Article key={frontmatter.path}>
-            <Title>
-              <Link to={frontmatter.path}>
-                {frontmatter.title}
-              </Link>
-            </Title>
-            <small>
-              {frontmatter.date}
-            </small>
-          </Article>
-        )
-      })}
-      <h2>Tags:</h2>
-      <hr />
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+     <Wrapper>
+      <h2>Categorias</h2>
+
+      <CategoriesWrapper>
         {tags.map((tagName, index) => (
-          <li key={index}>
-            <Link to={`tag/${tagName}`}>
-              #{tagName}
-            </Link>
-          </li>
+          <Link to={`tag/${tagName}`}>
+            <Tag key={index} name={tagName}/>
+          </Link>
         ))}
-      </ul>
+      </CategoriesWrapper>
+     </Wrapper>
+    
+      <CardWrapper>
+        {allMdx.edges.map(edge => {
+          const { frontmatter } = edge.node;
+          const tags = frontmatter.tags ? frontmatter.tags : [];
+          console.log('frontmatter.title', frontmatter.title)
+          console.log('frontmatter.tags', tags);
+          return(
+            <Card
+              renderLink={({children, className }) => (
+                <Link to={frontmatter.path} className={className}>{children}</Link>
+              )}
+              author={frontmatter.author}
+              avatar="https://avatars0.githubusercontent.com/u/4754339?s=400&v=4"
+              date={frontmatter.date}
+              title={frontmatter.title}
+              tags={frontmatter.tags ? frontmatter.tags: []}
+            />
+          )
+        })}
+      </CardWrapper>
     </Layout>
   )
 };
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    },
+    allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
+      edges {
+        node {
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            path
+            tags
+            author
+          }
+        }
+      }
+    }
+  }
+`;
