@@ -9,7 +9,7 @@ console.log('isProd process.env.NODE_ENV', isProd);
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `Frontendlabs v2`,
+    title: `FrontendLabs`,
     author: 'root'
   },
   plugins: [

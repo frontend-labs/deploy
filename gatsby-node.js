@@ -1,4 +1,5 @@
 const path = require('path');
+const homeTemplate = path.resolve('src/templates/home.js');
 
 const createTagPage = (createPage, posts) => {
   const singleTagIndexTemplate = path.resolve('src/templates/SingleTag.js');
@@ -30,6 +31,21 @@ const createTagPage = (createPage, posts) => {
   })
 };
 
+const getTags = (posts) => {
+  const postsByTag = {};
+  posts.forEach(({ node }) => {
+    if(node.frontmatter.tags) {
+      node.frontmatter.tags.forEach(tag => {
+        if(!postsByTag[tag]) {
+          postsByTag[tag] = [];
+        }
+        postsByTag[tag].push(node);
+      })
+    }
+  });
+  return Object.keys(postsByTag).sort();
+}
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return new Promise((resolve, reject) => {
@@ -37,7 +53,9 @@ exports.createPages = ({ graphql, actions }) => {
     resolve(
       graphql(`
         query {
-          allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
+          allMdx(
+            sort: {fields: [frontmatter___date], order: DESC}
+          ) {
             edges {
               node {
                 frontmatter {
@@ -53,6 +71,25 @@ exports.createPages = ({ graphql, actions }) => {
         }
       `).then(result => {
         const posts = result.data.allMdx.edges;
+        const postsPerPage = 6;
+        const numPages = Math.ceil(posts.length / postsPerPage);
+        const tags = getTags(posts);
+        Array.from({ length: numPages }).forEach((_, i) => {
+          createPage({
+            path: i === 0 ? `/` : `/${i+1}`,
+            component: homeTemplate,
+            context: {
+              tags,
+              numPages,
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              currentPage: i + 1
+            }
+          });
+        });
+        
+
+
         createTagPage(createPage, posts);
         posts.forEach(({ node }, index) => {
           const path = node.frontmatter.path;
