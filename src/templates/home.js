@@ -122,7 +122,7 @@ export default ({ data, pageContext }) => {
           {Array.from({ length: numPages }).map((_, i) => {
             return(
               <>
-                <Link to={i === 0 ? '/' : i+1}>{i+1}</Link>
+                <Link to={i === 0 ? '/' : `/${i+1}`}>{i+1}</Link>
               </>
             )
           })}
