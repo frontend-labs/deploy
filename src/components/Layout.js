@@ -4,10 +4,11 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { MDXProvider } from "@mdx-js/react";
 import { Speakerdeck } from "./Speakerdeck";
 import './layout.css';
+import { Pre } from './Pre';
 
 const Global = createGlobalStyle`
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     margin: 0;
   }
 `;
@@ -36,7 +37,9 @@ const components = {
   p: p,
   a: a,
   YouTube,
-  Speakerdeck
+  Speakerdeck,
+  pre: props => <div {...props} />,
+  code: Pre,
 };
 
 /** Styles for min */
