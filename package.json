@@ -19,6 +19,7 @@
     "@mdx-js/mdx": "^1.4.5",
     "@mdx-js/react": "^1.4.5",
     "@sindresorhus/slugify": "^0.9.1",
+    "copy-text-to-clipboard": "^2.2.0",
     "cross-env": "^5.2.1",
     "gatsby": "^2.15.9",
     "gatsby-plugin-draft": "^0.0.4",
@@ -26,6 +27,8 @@
     "gatsby-source-filesystem": "2.1.21",
     "gatsby-transformer-remark": "^2.6.21",
     "hygen": "^4.0.9",
+    "polished": "^3.6.7",
+    "prism-react-renderer": "^1.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-components": "^5.0.1"
