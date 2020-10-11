@@ -80,6 +80,8 @@ const MiniFooter = styled.div`
   color: #FFFFFF;
 `;
 
+const currentYear = new Date().getFullYear();
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(query);
   const { title } = data.site.siteMetadata;
@@ -111,7 +113,7 @@ const Layout = ({ children }) => {
         <MiniFooter>
           <FooterWrapper>
             <span>
-              © 2019, Construido por el equipo de Frontendlabs
+              © {currentYear}, Construido por el equipo de Frontendlabs
             </span>
           </FooterWrapper>
         </MiniFooter>
